@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * long_str - number to string.
- * 
+ *
  * @number: convert number.
  * @string: buffer string.
  * @base: converting base.
@@ -37,7 +37,7 @@ void long_str(long number, char *string, int base)
 
 /**
  * _atoi - string to integer.
- * 
+ *
  * @s: pointer string .
  * Return: int or 0.
  */

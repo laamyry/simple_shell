@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * _strtok - separates strings.
- * 
+ *
  * @ln: pointer.
  * @delim: characters mark.
  * Return: pointer.

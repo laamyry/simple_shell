@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * _print - print array.
- * 
+ *
  * @string: pointer.
  * Return: byte's number .
  */
@@ -11,7 +11,7 @@ int _print(char *string)
 }
 /**
  * _printf - print array.
- * 
+ *
  * @string: pointer.
  * Return: byte's number.
  */
@@ -22,7 +22,7 @@ int _printf(char *string)
 
 /**
  * _print_err - print array.
- * 
+ *
  * @data: program's data pointer.
  * @error_c: error code.
  * Return: byte's number.
