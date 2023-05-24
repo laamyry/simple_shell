@@ -1,6 +1,7 @@
 #ifndef _shell_h
 #define _shell_h
 
+#include "main.h"
 #include <stdio.h> 
 #include <unistd.h>
 #include <stdlib.h>
@@ -13,19 +14,16 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-#include "macros.h"
-
-
 /**
- * struct info- program's data.
- * @program_name: the name of the executable
- * @new_line: pointer to the input read for _getline
- * @cmd_name: pointer to the first command typed by the user
- * @run_count: number of excecuted comands
- * @file_identifier: file descriptor to the input of commands
- * @symbols: pointer to array of tokenized input
- * @env: copy of the environ
- * @list: array of pointers with aliases.
+ * struct info - program's data.
+ * @program_name: run program name.
+ * @new_line: pointer read _getline.
+ * @cmd_name: pointer.
+ * @run_count: cmd number.
+ * @file_identifier: identify file.
+ * @symbols: pointer.
+ * @env: environ copy.
+ * @list: array alias.
  */
 typedef struct info
 {
