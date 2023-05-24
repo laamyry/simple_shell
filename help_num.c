@@ -31,7 +31,7 @@ void long_str(long number, char *string, int base)
 		string[index++] = '-';
 
 	string[index] = '\0';
-	str_reverse(string);
+	flip_str(string);
 }
 
 

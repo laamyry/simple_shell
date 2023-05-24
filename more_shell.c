@@ -22,7 +22,7 @@ int shell_exit(program_data *data)
 		}
 		errno = _atoi(data->symbols[1]);
 	}
-	data_free(data);
+	free_data(data);
 	exit(errno);
 }
 

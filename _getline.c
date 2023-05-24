@@ -22,7 +22,7 @@ int _getline(program_data *data)
 			m++;
 		}
 
-		read_byte = read(data->file_descriptor, &buff, BUFFER_SIZE - 1);
+		read_byte = read(data->file_identifier, &buff, BUFFER_SIZE - 1);
 		if (read_byte == 0)
 			return (-1);
 

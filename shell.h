@@ -21,8 +21,8 @@
  * @program_name: the name of the executable
  * @new_line: pointer to the input read for _getline
  * @cmd_name: pointer to the first command typed by the user
- * @exec_counter: number of excecuted comands
- * @file_descriptor: file descriptor to the input of commands
+ * @run_count: number of excecuted comands
+ * @file_identifier: file descriptor to the input of commands
  * @symbols: pointer to array of tokenized input
  * @env: copy of the environ
  * @list: array of pointers with aliases.
@@ -32,8 +32,8 @@ typedef struct info
 	char *program_name;
 	char *new_line;
 	char *cmd_name;
-	int exec_counter;
-	int file_descriptor;
+	int run_count;
+	int file_identifier;
 	char **symbols;
 	char **env;
 	char **list;
@@ -86,11 +86,11 @@ char **tokenize_path(program_data *data);
 int locat_prog(program_data *data);
 
 
-void free_array_of_pointers(char **directories);
+void arr_free(char **directories);
 
-void free_recurrent_data(program_data *data);
+void free_Periodic(program_data *data);
 
-void data_free(program_data *data);
+void free_data(program_data *data);
 
 
 int shell_exit(program_data *data);
@@ -122,20 +122,20 @@ void print_env(program_data *data);
 
 int _print(char *string);
 
-int _printe(char *string);
+int _printf(char *string);
 
-int _print_error(int errorcode, program_data *data);
+int _print_err(int error_c, program_data *data);
 
 
 int str_len(char *string);
 
 char *str_dupl(char *string);
 
-int str_cmp(char *string1, char *string2, int number);
+int str_cmp(char *str1, char *str2, int number);
 
-char *str_join(char *string1, char *string2);
+char *str_join(char *str1, char *str2);
 
-void str_reverse(char *string);
+void flip_str(char *string);
 
 
 void long_str(long number, char *string, int base);
