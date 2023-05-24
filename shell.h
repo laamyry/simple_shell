@@ -40,9 +40,9 @@ typedef struct info
 } program_data;
 
 /**
- * struct internals - struct for the internals
- * @builtin: the name of the builtin
- * @function: the associated function to be called for each builtin
+ * struct internals - internals struct.
+ * @builtin: builtin's name
+ * @function: associated function.
  */
 typedef struct internals
 {
