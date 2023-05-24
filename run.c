@@ -7,7 +7,7 @@
  */
 int run(program_data *data)
 {
-	int m = 0, statu;
+	int m = 0, status;
 	pid_t pidd;
 
 	m = internal_list(data);
@@ -34,11 +34,11 @@ int run(program_data *data)
 		}
 		else
 		{
-			wait(&statu);
-			if (WIFEXITED(statu))
-				errno = WEXITSTATUS(statu);
-			else if (WIFSIGNALED(statu))
-				errno = 128 + WTERMSIG(statu);
+			wait(&status);
+			if (WIFEXITED(status))
+				errno = WEXITSTATUS(status);
+			else if (WIFSIGNALED(status))
+				errno = 128 + WTERMSIG(status);
 		}
 	}
 	return (0);

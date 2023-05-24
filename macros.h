@@ -18,7 +18,7 @@
 #define HELP_EXIT_MSG "exit=\n"\
 "exit:\texit [STATUS]\n\n"\
 "	Exit of the simple-shell.\n\n"\
-"	Exits the shell with a statu of N.  If N is omitted, the exit statu\n"\
+"	Exits the shell with a status of N.  If N is omitted, the exit status\n"\
 "	is that of the last command executed.\n\n"
 
 #define HELP_ENV_MSG "env=\n"\
@@ -46,7 +46,7 @@
 "	Arguments:\n\n"\
 "	BUILTIN_NAME specifiying a help topic.\n\n"\
 "	cd\t[dir]\n"\
-"	exit\t[statu]\n"\
+"	exit\t[status]\n"\
 "	env\n"\
 "	setenv\t[variable value]\n"\
 "	unset\t[variable]\n"\

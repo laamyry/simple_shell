@@ -48,9 +48,9 @@ the shell executes the named program with any remaining arguments given in a sep
 
 .B Exit Status
 .in +2n
-.B Shellby\fR returns the exit statu of the last command executed, unless a syntax error occurs, with zero indicating success and non-zero indicating failure.
+.B Shellby\fR returns the exit status of the last command executed, unless a syntax error occurs, with zero indicating success and non-zero indicating failure.
 
-If a command is not found, the return statu is 127; if a command is found but is not executable, the return statu is 126.
+If a command is not found, the return status is 127; if a command is found but is not executable, the return status is 126.
 
 All internals return zero on success and one or two on incorrect usage (indicated by a corresponding error message).
 .in
@@ -93,12 +93,12 @@ Commands separated by a \fI;\fR are executed sequentially.
 
 .B &&\fR - AND logical operator
 .RS
-.I command1\fR && \fIcommand2\fR: \fIcommand2\fR is executed if, and only if, \fIcommand1\fR returns an exit statu of zero.
+.I command1\fR && \fIcommand2\fR: \fIcommand2\fR is executed if, and only if, \fIcommand1\fR returns an exit status of zero.
 .RE
 
 .B ||\fR - OR logical operator
 .RS
-.I command1\fR || \fIcommand2\fR: \fIcommand2\fR is executed if, and only if, \fIcommand1\fR returns a non-zero exit statu.
+.I command1\fR || \fIcommand2\fR: \fIcommand2\fR is executed if, and only if, \fIcommand1\fR returns a non-zero exit status.
 .RE
 
 The operators \fI&&\fR and \fI||\fR have equal precedence, followed by \fI;\fR.
