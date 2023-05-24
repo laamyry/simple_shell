@@ -51,7 +51,7 @@ typedef struct internals
 } internals;
 
 
-void inicialize_data(program_data *data, int arc, char *argv[], char **env);
+void initialize_data(program_data *data, int arc, char *argv[], char **env);
 
 void sisifo(char *prompt, program_data *data);
 
@@ -73,20 +73,21 @@ int add_buf(char *buff, char *string_add);
 
 void symbolize(program_data *data);
 
-char *_strtok(char *line, char *delim);
+char *_strtok(char *ln, char *delim);
 
 int run(program_data *data);
 
 
 int internal_list(program_data *data);
 
+int file_chekcer(char *full_path);
 
-char **tokenize_path(program_data *data);
+char **symbolize_path(program_data *data);
 
 int locat_prog(program_data *data);
 
 
-void arr_free(char **directories);
+void arr_free(char **directs);
 
 void free_Periodic(program_data *data);
 

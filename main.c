@@ -11,13 +11,13 @@ int main(int argc, char *argv[], char *env[])
 	program_data data_struct = {NULL}, *data = &data_struct;
 	char *prompt = "";
 
-	inicialize_data(data, argc, argv, env);
+	initialize_data(data, argc, argv, env);
 
 	signal(SIGINT, handle_ctrl_c);
 
 	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO) && argc == 1)
-	{/* We are in the terminal, interactive mode */
-		errno = 2;/*???????*/
+	{
+		errno = 2;
 		prompt = PROMPT_MSG;
 	}
 	errno = 0;
@@ -37,21 +37,21 @@ void handle_ctrl_c(int opr UNUSED)
 }
 
 /**
- * inicialize_data - inicialize the struct with the info of the program
+ * initialize_data - inicialize the struct with the info of the program
  * @data: pointer to the structure of data
  * @argv: array of arguments pased to the program execution
  * @env: environ pased to the program execution
  * @argc: number of values received from the command line
  */
-void inicialize_data(program_data *data, int argc, char *argv[], char **env)
+void initialize_data(program_data *data, int argc, char *argv[], char **env)
 {
-	int i = 0;
+	int m = 0;
 
 	data->program_name = argv[0];
 	data->new_line = NULL;
 	data->cmd_name = NULL;
 	data->run_count = 0;
-	/* define the file descriptor to be readed*/
+
 	if (argc == 1)
 		data->file_identifier = STDIN_FILENO;
 	else
@@ -70,18 +70,18 @@ void inicialize_data(program_data *data, int argc, char *argv[], char **env)
 	data->env = malloc(sizeof(char *) * 50);
 	if (env)
 	{
-		for (; env[i]; i++)
+		for (; env[m]; m++)
 		{
-			data->env[i] = str_dupl(env[i]);
+			data->env[m] = str_dupl(env[m]);
 		}
 	}
-	data->env[i] = NULL;
+	data->env[m] = NULL;
 	env = data->env;
 
 	data->list = malloc(sizeof(char *) * 20);
-	for (i = 0; i < 20; i++)
+	for (m = 0; m < 20; m++)
 	{
-		data->list[i] = NULL;
+		data->list[m] = NULL;
 	}
 }
 /**
@@ -101,7 +101,7 @@ void sisifo(char *prompt, program_data *data)
 		if (code_err == EOF)
 		{
 			free_data(data);
-			exit(errno); /* if EOF is the fisrt Char of string, exit*/
+			exit(errno);
 		}
 		if (string_len >= 1)
 		{
@@ -109,7 +109,7 @@ void sisifo(char *prompt, program_data *data)
 			extend_var(data);
 			symbolize(data);
 			if (data->symbols[0])
-			{ /* if a text is given to prompt, run */
+			{
 				code_err = run(data);
 				if (code_err != 0)
 					_print_err(code_err, data);
