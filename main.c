@@ -1,10 +1,11 @@
 #include "shell.h"
 /**
- * main - initialize the variables of the program
- * @argc: number of values received from the command line
- * @argv: values received from the command line
- * @env: number of values received from the command line
- * Return: zero on succes.
+ * main - Initialize program variables.
+ * 
+ * @argc: Command line input count.
+ * @argv: Command line input values
+ * @env: Command line input count.
+ * Return: 0 = succes.
  */
 int main(int argc, char *argv[], char *env[])
 {
@@ -13,7 +14,7 @@ int main(int argc, char *argv[], char *env[])
 
 	initialize_data(data, argc, argv, env);
 
-	signal(SIGINT, handle_ctrl_c);
+	signal(SIGINT, ctrl_c_handle);
 
 	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO) && argc == 1)
 	{
@@ -21,27 +22,29 @@ int main(int argc, char *argv[], char *env[])
 		prompt = PROMPT_MSG;
 	}
 	errno = 0;
-	sisifo(prompt, data);
+	pro_inf(prompt, data);
 	return (0);
 }
 
 /**
- * handle_ctrl_c - print the prompt in a new line
- * when the signal SIGINT (ctrl + c) is send to the program
+ * ctrl_c_handle - When the program receives the SIGINT
+ * (Ctrl + C) signal, print the prompt on a new line.
+ * 
  * @UNUSED: option of the prototype
  */
-void handle_ctrl_c(int opr UNUSED)
+void ctrl_c_handle(int opr UNUSED)
 {
 	_print("\n");
 	_print(PROMPT_MSG);
 }
 
 /**
- * initialize_data - inicialize the struct with the info of the program
- * @data: pointer to the structure of data
- * @argv: array of arguments pased to the program execution
- * @env: environ pased to the program execution
- * @argc: number of values received from the command line
+ * initialize_data - Initialize the struct with program information.
+ * 
+ * @data: data structure pointer.
+ * @argv: Program execution arguments array.
+ * @env: Environment passed during program execution.
+ * @argc: Count of command line input values.
  */
 void initialize_data(program_data *data, int argc, char *argv[], char **env)
 {
@@ -85,11 +88,12 @@ void initialize_data(program_data *data, int argc, char *argv[], char **env)
 	}
 }
 /**
- * sisifo - its a infinite loop that shows the prompt
- * @prompt: prompt to be printed
- * @data: its a infinite loop that shows the prompt
+ * pro_inf - It's an endless loop displaying the prompt.
+ * 
+ * @prompt: Print Prompt.
+ * @data: It's an endless loop displaying the prompt.
  */
-void sisifo(char *prompt, program_data *data)
+void pro_inf(char *prompt, program_data *data)
 {
 	int code_err = 0, string_len = 0;
 

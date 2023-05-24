@@ -51,9 +51,9 @@ typedef struct internals
 
 void initialize_data(program_data *data, int arc, char *argv[], char **env);
 
-void sisifo(char *prompt, program_data *data);
+void pro_inf(char *prompt, program_data *data);
 
-void handle_ctrl_c(int opr UNUSED);
+void ctrl_c_handle(int opr UNUSED);
 
 
 int _getline(program_data *data);
