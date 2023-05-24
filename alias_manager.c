@@ -7,7 +7,6 @@
  */
 int p_alias(program_data *data, char *alias)
 {
-
 	int m = 0, n, len;
 	char buff[250] = {'\0'};
 
@@ -17,27 +16,26 @@ int p_alias(program_data *data, char *alias)
 
 		while (data->list[m])
 		{
-			if (!alias || (str_cmp(data->list[m], alias, len) &&
-			data->list[m][len] == '='))
-		{
-		for (n = 0; data->list[m][n]; n++)
-		{
-   			buff[n] = data->list[m][n];
-   			if (data->list[m][n] == '=')
-			break;
+			if (!alias || (str_cmp(data->list[m], alias, len)
+						&&	data->list[m][len] == '='))
+			{
+				for (n = 0; data->list[m][n]; n++)
+				{
+					buff[n] = data->list[m][n];
+					if (data->list[m][n] == '=')
+						break;
+				}
+				buff[n + 1] = '\0';
+				add_buf(buff, "'");
+				add_buf(buff, data->list[m] + n + 1);
+				add_buf(buff, "'\n");
+				_print(buff);
+			}
+			m++;
 		}
-		buff[n + 1] = '\0';
-		add_buf(buff, "'");
-		add_buf(buff, data->list[m] + n + 1);
-		add_buf(buff, "'\n");
-		_print(buff);
-	}
-	m++;
-}
 	}
 
 	return (0);
-
 }
 
 /**
@@ -51,23 +49,18 @@ char *obt_alias(program_data *data, char *name)
 	int m = 0, len;
 
 	if (name == NULL || data->list == NULL)
-	{
 		return (NULL);
-	}
-
 	len = str_len(name);
-
 	while (data->list[m])
 	{
 		if (str_cmp(name, data->list[m], len) &&
-			data->list[m][len] == '=')
+				data->list[m][len] == '=')
 		{
 			return (data->list[m] + len + 1);
 		}
 		m++;
 	}
 	return (NULL);
-
 }
 
 /**
@@ -78,7 +71,6 @@ char *obt_alias(program_data *data, char *name)
  */
 int esta_alias(char *alias_str, program_data *data)
 {
-
 	int m = 0, n = 0;
 	char buff[250] = {'0'}, *tmp = NULL;
 
@@ -89,9 +81,7 @@ int esta_alias(char *alias_str, program_data *data)
 	while (alias_str[m])
 	{
 		if (alias_str[m] != '=')
-		{
 			buff[m] = alias_str[m];
-		}
 		else
 		{
 			tmp = obt_alias(data, alias_str + m + 1);
@@ -99,18 +89,16 @@ int esta_alias(char *alias_str, program_data *data)
 		}
 		m++;
 	}
-
 	while (data->list[n])
 	{
 		if (str_cmp(buff, data->list[n], m) &&
-			data->list[n][m] == '=')
+				data->list[n][m] == '=')
 		{
 			free(data->list[n]);
 			break;
 		}
 		n++;
 	}
-
 	if (tmp)
 	{
 		add_buf(buff, "=");
@@ -118,9 +106,6 @@ int esta_alias(char *alias_str, program_data *data)
 		data->list[n] = str_dupl(buff);
 	}
 	else
-	{
 		data->list[n] = str_dupl(alias_str);
-	}
 	return (0);
-
 }

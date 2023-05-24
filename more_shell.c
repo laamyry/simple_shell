@@ -13,7 +13,7 @@ int shell_exit(program_data *data)
 		while (data->symbols[1][m])
 		{
 			if ((data->symbols[1][m] < '0' || data->symbols[1][m] > '9')
-				&& data->symbols[1][m] != '+')
+					&& data->symbols[1][m] != '+')
 			{
 				errno = 2;
 				return (2);
@@ -28,7 +28,7 @@ int shell_exit(program_data *data)
 
 /**
  * shell_cd - change directory.
- * 
+ *
  * @data: program's data.
  * Return: 0 sucess, or argument number.
  */
@@ -70,7 +70,7 @@ int shell_cd(program_data *data)
 
 /**
  * work_d_set - work directory.
- * 
+ *
  * @data: program's data.
  * @new_d: work directory.
  * Return: 0 sucess, or argument number.

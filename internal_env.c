@@ -6,16 +6,12 @@
  */
 int internal_env(program_data *data)
 {
-
 	int m = 0;
 	char cp_n[50] = {'\0'};
 	char *vari_cp = NULL;
 
 	if (data->symbols[1] == NULL)
-	{
 		print_env(data);
-	}
-
 	else
 	{
 		while (data->symbols[1][m])
@@ -58,7 +54,6 @@ int internal_env(program_data *data)
  */
 int internal_env_set(program_data *data)
 {
-
 	if (data->symbols[1] == NULL || data->symbols[2] == NULL)
 	{
 		return (0);
