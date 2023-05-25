@@ -71,10 +71,13 @@ char **symbolize_path(program_data *data)
 
 	PATH = str_dupl(PATH);
 
-	for (m = 0; PATH[m]; m++)
+	while (PATH[m])
 	{
 		if (PATH[m] == ':')
+		{
 			directs_counter++;
+		}
+		m++;
 	}
 
 	symbols = malloc(sizeof(char *) * directs_counter);

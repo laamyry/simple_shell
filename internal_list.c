@@ -7,7 +7,7 @@
 int internal_list(program_data *data)
 {
 
-	int navigator = 0;
+	int navigator;
 	internals alter[] = {
 		{"exit", shell_exit},
 		{"help", shell_help},
@@ -19,15 +19,13 @@ int internal_list(program_data *data)
 		{NULL, NULL}
 	};
 
-	while (alter[navigator].builtin != NULL)
+	for (navigator = 0; alter[navigator].builtin != NULL; navigator++)
 	{
 
 		if (str_cmp(alter[navigator].builtin, data->cmd_name, 0))
 		{
-
 			return (alter[navigator].function(data));
 		}
-		navigator++;
 	}
 	return (-1);
 }
