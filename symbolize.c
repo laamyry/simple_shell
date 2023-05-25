@@ -7,7 +7,7 @@
 void symbolize(program_data *data)
 {
 	char *separator = " \t";
-	int m = 0, n = 0, count = 2, len;
+	int m = 0, n, count = 2, len;
 
 	len = str_len(data->new_line);
 	if (len)
@@ -18,13 +18,12 @@ void symbolize(program_data *data)
 
 	while (data->new_line[m])
 	{
-		while (separator[n])
+		for (n = 0; separator[n]; n++)
 		{
 			if (data->new_line[m] == separator[n])
 			{
 				count++;
 			}
-			n++;
 		}
 		m++;
 	}

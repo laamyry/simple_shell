@@ -104,7 +104,7 @@ int work_d_set(program_data *data, char *new_d)
 int shell_help(program_data *data)
 {
 
-	int m, len = 0;
+	int m = 0, len = 0;
 	char *messages[6] = {NULL};
 
 	messages[0] = HELP_MSG;
@@ -126,7 +126,7 @@ int shell_help(program_data *data)
 	messages[4] = HELP_UNSETENV_MSG;
 	messages[5] = HELP_CD_MSG;
 
-	for (m = 0; messages[m]; m++)
+	while (messages[m])
 	{
 		len = str_len(data->symbols[1]);
 		if (str_cmp(data->symbols[1], messages[m], len))
@@ -134,6 +134,7 @@ int shell_help(program_data *data)
 			_print(messages[m] + len + 1);
 			return (1);
 		}
+		m++;
 	}
 
 	errno = EINVAL;
@@ -143,6 +144,7 @@ int shell_help(program_data *data)
 
 /**
  * alias_shell - add/delete/display aliases
+ * 
  * @data: program's data.
  * Return: 0 sucess, or argument number.
  */
